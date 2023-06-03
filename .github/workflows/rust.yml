@@ -24,7 +24,7 @@ jobs:
       run: cargo test --verbose
 
     - name: Generate coverage
-      run: cargo tarpaulin --verbose --all-features --workspace --timeout 120 --out Xml
+      uses: actions-rs/tarpaulin@v0.1
 
     - name: Upload to codecov.io
       uses: codecov/codecov-action@v2
