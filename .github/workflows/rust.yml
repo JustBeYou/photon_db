@@ -17,6 +17,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install stable toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
     - name: Build
       run: cargo build --verbose
 
@@ -25,6 +31,9 @@ jobs:
 
     - name: Generate coverage
       uses: actions-rs/tarpaulin@v0.1
+      with:
+        version: '0.15.0'
+        args: '-- --test-threads 1'
 
     - name: Upload to codecov.io
       uses: codecov/codecov-action@v2
