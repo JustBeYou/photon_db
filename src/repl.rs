@@ -76,7 +76,10 @@ fn execute(command: &ReplCommand, context: &mut Context) -> ReplResult {
             String::from("Bye bye")
         }
         ReplCommand::DoNothing => String::new(),
-        ReplCommand::SqlCommand(_statement) => String::from("SQL support not yet implemented"),
+        ReplCommand::SqlCommand(statement) => String::from(format!(
+            "SQL support not yet implemented for {:?}",
+            statement
+        )),
     }
 }
 
